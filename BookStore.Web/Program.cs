@@ -1,7 +1,4 @@
 
-using DAL.Dbcontext;
-using Microsoft.EntityFrameworkCore;
-
 namespace BookStore.Web
 {
     public class Program
@@ -17,7 +14,10 @@ namespace BookStore.Web
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+               
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
