@@ -1,4 +1,7 @@
 
+using core.Unitofwork;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace BookStore.Web
 {
     public class Program
@@ -16,7 +19,7 @@ namespace BookStore.Web
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-            builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            builder.Services.AddTransient<Iunitofwork, unitofwork>();
 
             var app = builder.Build();
 

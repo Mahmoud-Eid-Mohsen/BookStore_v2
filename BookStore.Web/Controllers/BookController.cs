@@ -15,7 +15,7 @@ namespace BookStore.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllBooks()
         {
-            var books = await _bookRepository.GetAllAsync();
+            var books = await _ .GetAllAsync();
             return Ok(books);
         }
 

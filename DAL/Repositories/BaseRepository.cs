@@ -6,12 +6,16 @@ namespace DAL.Repositories
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        private readonly ApplicationDbContext _context;
+        private  ApplicationDbContext _context;
+        private DbContext context;
 
-        public BaseRepository(ApplicationDbContext context)
+       
+
+        public BaseRepository(DbContext context)
         {
-            _context = context;
+            this.context = context;
         }
+
         // Implementing the methods of IBaseRepository interface
         public Task AddAsync(T entity)
         {

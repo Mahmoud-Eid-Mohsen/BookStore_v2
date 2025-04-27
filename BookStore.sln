@@ -5,7 +5,7 @@ VisualStudioVersion = 17.13.35828.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Web", "BookStore.Web\BookStore.Web.csproj", "{A8E6D395-4229-434D-8994-B77DE5F6CEEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uintofwork.core", "uintofwork.core\uintofwork.core.csproj", "{193FDC55-6FA5-4132-AD10-C70CF8353B99}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "core", "uintofwork.core\core.csproj", "{193FDC55-6FA5-4132-AD10-C70CF8353B99}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{4B51877E-5898-4794-8AA5-EB817D600515}"
 EndProject

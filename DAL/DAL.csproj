@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\uintofwork.core\uintofwork.core.csproj" />
+    <ProjectReference Include="..\uintofwork.core\core.csproj" />
   </ItemGroup>
 
 </Project>
