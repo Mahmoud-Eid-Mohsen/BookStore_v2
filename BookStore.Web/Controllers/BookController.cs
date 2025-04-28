@@ -7,22 +7,22 @@ namespace BookStore.Web.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        private readonly IBaseRepository<Book> _bookRepository;
-        public BookController(IBaseRepository<Book> bookRepository)
+        private readonly Iunitofwork _unitofwork;
+        public BookController(Iunitofwork unitofwork)
         {
-            _bookRepository = bookRepository;
+            _unitofwork= unitofwork;
         }
         [HttpGet]
         public async Task<IActionResult> GetAllBooks()
         {
-            var books = await _ .GetAllAsync();
+            var books = await _unitofwork.Books.GetAllAsync();
             return Ok(books);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBookById(int id)
         {
-            var book = await _bookRepository.GetByIdAsync(id);
+            var book = await _unitofwork.Books.GetByIdAsync(id);
             if (book == null)
             {
                 return NotFound();
@@ -36,7 +36,7 @@ namespace BookStore.Web.Controllers
             {
                 return BadRequest();
             }
-            await _bookRepository.AddAsync(book);
+            await _unitofwork.Books.AddAsync(book);
             return CreatedAtAction(nameof(GetBookById), new { id = book.id }, book);
         }
         [HttpPut("{id}")]
@@ -46,23 +46,23 @@ namespace BookStore.Web.Controllers
             {
                 return BadRequest();
             }
-            var existingBook = await _bookRepository.GetByIdAsync(id);
+            var existingBook = await _unitofwork.Books.GetByIdAsync(id);
             if (existingBook == null)
             {
                 return NotFound();
             }
-            await _bookRepository.UpdateAsync(book);
+            await _unitofwork.Books.UpdateAsync(book);
             return NoContent();
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBook(int id)
         {
-            var existingBook = await _bookRepository.GetByIdAsync(id);
+            var existingBook = await _unitofwork.Books.GetByIdAsync(id);
             if (existingBook == null)
             {
                 return NotFound();
             }
-            await _bookRepository.DeleteAsync(id);
+            await _unitofwork.Books.DeleteAsync(id);
             return NoContent();
         }
     }

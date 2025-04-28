@@ -1,6 +1,7 @@
 
+
 using core.Unitofwork;
-using Microsoft.Extensions.DependencyInjection;
+using DAL.Repositories;
 
 namespace BookStore.Web
 {
@@ -19,7 +20,7 @@ namespace BookStore.Web
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-            builder.Services.AddTransient<Iunitofwork, unitofwork>();
+            builder.Services.AddScoped<Iunitofwork, unitofwork>();
 
             var app = builder.Build();
 
